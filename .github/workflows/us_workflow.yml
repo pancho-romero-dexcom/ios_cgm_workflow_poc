@@ -21,7 +21,7 @@ on:
         default: '0.0.0'
 jobs:
   build_app:
-    runs-on: bigsur
+    runs-on: self-hosted
     steps:
     - name: bundle install
       run: echo "installing bundle"
