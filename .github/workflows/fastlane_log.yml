@@ -1,0 +1,20 @@
+name: Fastlane Log
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      path:
+        required: true
+        type: string
+
+
+jobs:
+  fastlane_log:
+    runs-on: self-hosted
+    steps:
+    - name: fastlane log
+      run: echo "fastlane_log"
+  
