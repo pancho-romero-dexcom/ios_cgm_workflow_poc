@@ -1,0 +1,28 @@
+name: US Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      choice:
+        type: choice
+        description: destination
+        options:
+        - artifact_dev
+        - artifact_prod_vnv
+        - e_store
+        - app_store
+      version:
+        description: 'App version'
+        required: true
+        default: '0.0.0'
+      deploy_artifactory:
+        description: 'App version structure on artifactory'
+        required: true
+        default: '0.0.0'
+jobs:
+  build_app:
+    runs-on: bigsur
+    steps:
+    - name: bundle install
+      run: echo "installing bundle"
+  
