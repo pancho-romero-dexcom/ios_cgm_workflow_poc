@@ -19,13 +19,7 @@ on:
         type: string
 jobs:     
 
-  checkout:
-    runs-on: self-hosted    
-    steps:
-    - uses: actions/checkout@v2
-
   fastlane_build:
-    needs: checkout
     runs-on: self-hosted    
     steps:
 
