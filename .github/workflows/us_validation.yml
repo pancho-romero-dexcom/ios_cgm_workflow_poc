@@ -5,14 +5,13 @@ on:
     inputs:
       destination:
         description: build output destination
-        required: true
+        type: string
       version:
         description: 'App version'
-        required: true        
+        type: string
       deploy:
         description: 'App version structure on artifactory or e-store'
-        required: true        
-
+        type: string
 jobs:
 
   validate_destination:
