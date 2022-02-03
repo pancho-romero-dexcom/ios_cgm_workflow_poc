@@ -51,7 +51,7 @@ jobs:
         fi
         if ${{ github.event.inputs.issue == 'G6X-' }} 
         then 
-          echo "🚫 invalid issue ${{ github.event.inputs.version }}"
+          echo "🚫 invalid issue ${{ github.event.inputs.issue }}"
           exit 1
         fi
 
