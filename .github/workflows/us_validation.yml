@@ -1,0 +1,41 @@
+name: (US) Validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      destination:
+        type: choice
+        description: build output destination
+        required: true
+      version:
+        description: 'App version'
+        required: true        
+      deploy:
+        description: 'App version structure on artifactory or e-store'
+        required: true        
+
+jobs:
+
+  validate_destination:
+    runs-on: self-hosted
+    steps:
+
+    - name: validate for dev
+      if: ${{ github.event.inputs.destination == 'artifact_dev' }}
+      run: | 
+        echo "is for development"
+
+    - name: validate for prod_vnv
+      if: ${{ github.event.inputs.destination == 'artifact_prod_vnv' }}
+      run: | 
+        echo "is for prod_vnv"
+
+    - name: validate for e-store
+      if: ${{ github.event.inputs.destination == 'e_store' }}
+      run: | 
+        echo "is for e-store"
+
+    - name: validate for app-store
+      if: ${{ github.event.inputs.destination == 'app_store' }}
+      run: | 
+        echo "is for app-store"  
