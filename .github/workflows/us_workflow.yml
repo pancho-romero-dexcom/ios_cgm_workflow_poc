@@ -25,14 +25,26 @@ jobs:
   validate_destination:
     runs-on: self-hosted
     steps:
-    - name: print input 
-      run: |
-        echo "${{ github.event.inputs.destination }}"
-        echo "${{ github.event.inputs.version }}"
-        echo "${{ github.event.inputs.deploy_artifactory }}"        
+
     - name: validate for dev
       if: ${{ github.event.inputs.destination == 'artifact_dev' }}
-      run: echo "is for development"
+      run: | 
+        echo "is for development"
+
+    - name: validate for prod_vnv
+      if: ${{ github.event.inputs.destination == 'artifact_prod_vnv' }}
+      run: | 
+        echo "is for prod_vnv"
+
+    - name: validate for e-store
+      if: ${{ github.event.inputs.destination == 'e_store' }}
+      run: | 
+        echo "is for e-store"
+
+    - name: validate for app-store
+      if: ${{ github.event.inputs.destination == 'app_store' }}
+      run: | 
+        echo "is for app-store"
 
     #- name: validate for for prod_vnv
     #- name: validate for for e-store
