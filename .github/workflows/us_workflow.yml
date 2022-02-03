@@ -21,8 +21,20 @@ on:
         default: '0.0.0'
 jobs:
 
+  validate_inputs:
+    runs-on: self-hosted
+    steps:
+    
+    # Validate inputs
+    - name: validate inputs
+      run: |
+        exit 1
+
+
+
   build_app:
     runs-on: self-hosted
+    needs: validate_inputs
     steps:
     
     # Validate inputs
@@ -37,6 +49,7 @@ jobs:
 
   fastlane:
     uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/fastlane_log.yml@main
+    needs: build_app
     with:
       name: pancho
       path: ./
