@@ -21,17 +21,16 @@ on:
         default: '0.0.0'
 jobs:
 
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   validate_inputs:
     runs-on: self-hosted
     steps:
-    
-    # Validate inputs
     - name: validate inputs
       run: |
+        echo ${github.event.inputs.version = '0.0.0' }
         exit 1
 
-
-
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
   build_app:
     runs-on: self-hosted
     needs: validate_inputs
