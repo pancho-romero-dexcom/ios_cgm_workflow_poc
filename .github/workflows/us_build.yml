@@ -20,7 +20,6 @@ on:
 jobs:     
 
   validate_destination:
-    needs: validate_version
     runs-on: self-hosted    
     steps:
 
