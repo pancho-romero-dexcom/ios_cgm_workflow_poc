@@ -54,6 +54,7 @@ jobs:
         exit 0
 
   fastlane_log:
+    needs: fastlane_build 
     runs-on: self-hosted    
     steps:
     - name: actions/upload-artifact@v2
