@@ -1,20 +1,53 @@
 name: (US) Build
 
+
+
 on:
   workflow_call:
     inputs:
-      name:
-        required: true
+      destination:
+        description: build output destination
         type: string
-      path:
-        required: true
+      version:
+        description: 'App version'
         type: string
+      deploy:
+        description: 'App version structure on artifactory or e-store'
+        type: string
+      issue:
+        description: 'task/bug number'
+        type: string
+jobs:     
 
-
-jobs:
-  fastlane_log:
-    runs-on: self-hosted
+  validate_destination:
+    needs: validate_version
+    runs-on: self-hosted    
     steps:
-    - name: fastlane log
-      run: echo "fastlane_log"
-  
+
+    - name: build for artifact dev
+      if: ${{ github.event.inputs.destination == 'artifact_dev' }}
+      run: | 
+        echo "building for development"
+
+    - name: build for artifact prod_vnv
+      if: ${{ github.event.inputs.version == 'artifact_prod_vnv' }}
+      run: | 
+        echo "building for development"
+
+    - name: build for e-store enterprice
+      if: ${{ github.event.inputs.destination == 'e_store_enterprise' }}
+      run: | 
+        echo "building for e-store" 
+        exit 0
+    
+    - name: build for e-store prod-vnv
+      if: ${{ github.event.inputs.destination == 'e_store_prod_vnv' }}
+      run: | 
+        echo "building for e-store"
+        exit 0
+
+    - name: build for app-store
+      if: ${{ github.event.inputs.destination == 'app_store' }}
+      run: | 
+        echo "building for app-store"  
+        exit 0
