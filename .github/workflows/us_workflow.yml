@@ -33,7 +33,6 @@ jobs:
       version: ${{ github.event.inputs.version }}
       deploy: ${{ github.event.inputs.deploy }}
       issue: ${{ github.event.inputs.issue }}
-        
 
   build:
     needs: validate
@@ -44,58 +43,3 @@ jobs:
       version: ${{ github.event.inputs.version }}
       deploy: ${{ github.event.inputs.deploy }}
       issue: ${{ github.event.inputs.issue }}
-
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#  validate_destination:
-#    runs-on: self-hosted
-#    steps:
-#
-#    - name: validate for dev
-#      if: ${{ github.event.inputs.destination == 'artifact_dev' }}
-#      run: | 
-#        echo "is for development"
-#
-#    - name: validate for prod_vnv
-#      if: ${{ github.event.inputs.destination == 'artifact_prod_vnv' }}
-#      run: | 
-#        echo "is for prod_vnv"
-#
-#    - name: validate for e-store
-#      if: ${{ github.event.inputs.destination == 'e_store' }}
-#      run: | 
-#        echo "is for e-store"
-#
-#    - name: validate for app-store
-#      if: ${{ github.event.inputs.destination == 'app_store' }}
-#      run: | 
-#        echo "is for app-store"  
-#  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  
-  
-
-# build_app:
-#    runs-on: self-hosted
-#    steps:
-#    
-#    # Validate inputs
-#    - name: validate inputs
-#    
-#      run: |
-#        exit 1
-#
-#
-#
-#    - name: bundle install
-#      run: echo "installing bundle"
-#
-#  fastlane:
-#    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/fastlane_log.yml@main
-#    needs: build_app
-#    with:
-#      name: pancho
-#      path: ./
-      
-      
-    
-      
-  

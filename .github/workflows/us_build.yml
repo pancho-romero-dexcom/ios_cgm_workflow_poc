@@ -19,7 +19,13 @@ on:
         type: string
 jobs:     
 
-  validate_destination:
+  checkout:
+    runs-on: self-hosted    
+    steps:
+    - uses: actions/checkout@v2
+
+  fastlane_build:
+    needs: checkout
     runs-on: self-hosted    
     steps:
 
@@ -52,3 +58,8 @@ jobs:
       run: | 
         echo "building for app-store"  
         exit 0
+
+  fastlane_log:
+    runs-on: self-hosted    
+    steps:
+    - name: actions/upload-artifact@v2
