@@ -28,11 +28,13 @@ jobs:
       if: ${{ github.event.inputs.destination == 'artifact_dev' }}
       run: | 
         echo "building for development"
+        exit 0
 
     - name: build for artifact prod_vnv
       if: ${{ github.event.inputs.version == 'artifact_prod_vnv' }}
       run: | 
         echo "building for development"
+        exit 0
 
     - name: build for e-store enterprice
       if: ${{ github.event.inputs.destination == 'e_store_enterprise' }}
