@@ -4,7 +4,6 @@ on:
   workflow_call:
     inputs:
       destination:
-        type: choice
         description: build output destination
         required: true
       version:
