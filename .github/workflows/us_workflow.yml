@@ -22,23 +22,10 @@ on:
 jobs:
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  validate_inputs:
-    runs-on: self-hosted
-    steps:
-    - name: validate inputs
-      run: |
-      if [ '' = '0.0.0' ]
-      then
-        echo "invalid version "
-        exit 1
-      fi
-        
-        
-
+  
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
   build_app:
     runs-on: self-hosted
-    needs: validate_inputs
     steps:
     
     # Validate inputs
