@@ -23,7 +23,7 @@ jobs:
       if: ${{ github.event.inputs.destination == 'artifact_dev' }}
       run: | 
         echo "is for development"
-        if ${{ github.event.inputs.destination == '0.0.0' }} 
+        if ${{ github.event.inputs.version == '0.0.0' }} 
         then 
           echo "invalid version ${{ github.event.inputs.version == '0.0.0' }}"
           exit 1
