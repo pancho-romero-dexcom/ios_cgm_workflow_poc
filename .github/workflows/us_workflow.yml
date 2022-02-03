@@ -27,8 +27,13 @@ jobs:
     steps:
     - name: validate inputs
       run: |
-        echo ${github.event.inputs.version = '0.0.0' }
+      if [ github.event.inputs.version = '0.0.0' ]
+      then
+        echo "invalid version ${github.event.inputs.version}"
         exit 1
+      fi
+        
+        
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
   build_app:
