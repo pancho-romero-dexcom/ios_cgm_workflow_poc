@@ -23,12 +23,22 @@ jobs:
       if: ${{ github.event.inputs.destination == 'artifact_dev' }}
       run: | 
         echo "is for development"
+        if ${{ github.event.inputs.destination == '0.0.0' }} 
+        then 
+          echo "invalid version ${{ github.event.inputs.destination == '0.0.0' }}"
+          exit 1
+        fi
 
     - name: validate for prod_vnv
-      if: ${{ github.event.inputs.destination == 'artifact_prod_vnv' }}
+      if: ${{ github.event.inputs.version == 'artifact_prod_vnv' }}
       run: | 
         echo "is for prod_vnv"
 
+    - name: validate for e-store e
+      if: ${{ github.event.inputs.destination == 'e_store' }}
+      run: | 
+        echo "is for e-store"
+    
     - name: validate for e-store
       if: ${{ github.event.inputs.destination == 'e_store' }}
       run: | 
