@@ -14,26 +14,66 @@ on:
         type: string
 jobs:
 
-  validate_destination:
-    runs-on: self-hosted
-    steps:
+#  validate_destination:
+#    runs-on: self-hosted
+#    steps:
+#
+#    - name: validate for dev
+#      if: ${{ github.event.inputs.destination == 'artifact_dev' }}
+#      run: | 
+#        echo "is for development"
+#
+#    - name: validate for prod_vnv
+#      if: ${{ github.event.inputs.destination == 'artifact_prod_vnv' }}
+#      run: | 
+#        echo "is for prod_vnv"
+#
+#    - name: validate for e-store
+#      if: ${{ github.event.inputs.destination == 'e_store' }}
+#      run: | 
+#        echo "is for e-store"
+#
+#    - name: validate for app-store
+#      if: ${{ github.event.inputs.destination == 'app_store' }}
+#      run: | 
+#        echo "is for app-store"  
 
-    - name: validate for dev
-      if: ${{ github.event.inputs.destination == 'artifact_dev' }}
+validate_for_artifact_dev:
+    if: ${{ github.event.inputs.destination == 'artifact_dev' }}
+    runs-on: self-hosted    
+    steps:
+    - name: validate for dev      
       run: | 
         echo "is for development"
 
-    - name: validate for prod_vnv
-      if: ${{ github.event.inputs.destination == 'artifact_prod_vnv' }}
+validate_for_artifact_prod_vnv:
+    if: ${{ github.event.inputs.destination == 'artifact_prod_vnv' }}
+    runs-on: self-hosted
+    steps:
+    - name: validate for prod_vnv      
       run: | 
         echo "is for prod_vnv"
 
-    - name: validate for e-store
-      if: ${{ github.event.inputs.destination == 'e_store' }}
+validate_for_e_store_enterprice:
+    if: ${{ github.event.inputs.destination == 'e_store_enterprise' }}
+    runs-on: self-hosted
+    steps:
+    - name: validate for e-store enterprice       
       run: | 
         echo "is for e-store"
 
-    - name: validate for app-store
-      if: ${{ github.event.inputs.destination == 'app_store' }}
+validate_for_e_store_prod_vnv:
+    if: ${{ github.event.inputs.destination == 'e_store_prod_vnv' }}
+    runs-on: self-hosted
+    steps:
+    - name: validate for e-store prod-vnv
       run: | 
-        echo "is for app-store"  
+        echo "is for e-store"
+
+validate_for_appStore:
+    if: ${{ github.event.inputs.destination == 'app_store' }}
+    runs-on: self-hosted
+    steps:
+    - name: validate for app-store      
+      run: | 
+        echo "is for app-store"      
