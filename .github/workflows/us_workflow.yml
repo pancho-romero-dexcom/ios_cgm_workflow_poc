@@ -29,9 +29,11 @@ jobs:
       run: |
         echo "${{ github.event.inputs.destination }}"
         echo "${{ github.event.inputs.version }}"
-        echo "${{ github.event.inputs.deploy_artifactory }}"
-        
-    #- name: validate for artifact      
+        echo "${{ github.event.inputs.deploy_artifactory }}"        
+    - name: validate for dev
+      if: [github.event.inputs.message = "artifact_dev" ]
+      run: echo "is for development"
+
     #- name: validate for for prod_vnv
     #- name: validate for for e-store
     #- name: validate for for app-store
