@@ -25,4 +25,13 @@ jobs:
     steps:
     - name: bundle install
       run: echo "installing bundle"
+  fastlane:
+    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/fastlane_log.yml@main
+    with:
+      name: pancho
+      path: ./
+      
+      
+    
+      
   
