@@ -31,7 +31,7 @@ jobs:
         echo "${{ github.event.inputs.version }}"
         echo "${{ github.event.inputs.deploy_artifactory }}"        
     - name: validate for dev
-      if: [github.event.inputs.message = "artifact_dev" ]
+      if: [github.event.inputs.message == "artifact_dev" ]
       run: echo "is for development"
 
     #- name: validate for for prod_vnv
