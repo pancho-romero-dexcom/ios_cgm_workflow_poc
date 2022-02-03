@@ -1,7 +1,7 @@
 name: (US) Validation
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       destination:
         type: choice

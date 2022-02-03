@@ -1,4 +1,4 @@
-name: Fastlane Log
+name: (US) Fastlane Log
 
 on:
   workflow_call:
