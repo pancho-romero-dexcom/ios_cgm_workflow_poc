@@ -20,11 +20,21 @@ on:
         required: true
         default: '0.0.0'
 jobs:
+
   build_app:
     runs-on: self-hosted
     steps:
+    
+    # Validate inputs
+    - name: validate inputs
+      run: |
+        exit 1
+
+
+
     - name: bundle install
       run: echo "installing bundle"
+
   fastlane:
     uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/fastlane_log.yml@main
     with:
