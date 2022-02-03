@@ -20,6 +20,10 @@ on:
         description: 'App version structure on artifactory or e-store'
         required: true
         default: '0.0.0'
+      issue:
+        description: 'task/bug number'
+        required: true
+        default: 'G6X-'
 jobs:
 
   validate:
@@ -29,7 +33,7 @@ jobs:
       version: ${{ github.event.inputs.version }}
       deploy: ${{ github.event.inputs.deploy }}
 
-      
+
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #  validate_destination:
 #    runs-on: self-hosted

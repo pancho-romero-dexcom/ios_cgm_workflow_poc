@@ -12,6 +12,9 @@ on:
       deploy:
         description: 'App version structure on artifactory or e-store'
         type: string
+      issue:
+        description: 'task/bug number'
+        type: string
 jobs:     
 
   validate_version:
@@ -37,15 +40,36 @@ jobs:
     runs-on: self-hosted    
     steps:
 
-    - name: validate for dev
+    - name: validate for artifact dev
       if: ${{ github.event.inputs.destination == 'artifact_dev' }}
       run: | 
         echo "is for development"        
+        if ${{ github.event.inputs.issue == '' }} 
+        then 
+          echo "🚫 invalid empty issue "
+          exit 1
+        fi
+        if ${{ github.event.inputs.issue == 'G6X-' }} 
+        then 
+          echo "🚫 invalid issue ${{ github.event.inputs.version }}"
+          exit 1
+        fi
 
-    - name: validate for prod_vnv
+    - name: validate for artifact prod_vnv
       if: ${{ github.event.inputs.version == 'artifact_prod_vnv' }}
       run: | 
         echo "is for prod_vnv"
+        echo "is for development"        
+        if ${{ github.event.inputs.issue == '' }} 
+        then 
+          echo "🚫 invalid empty issue "
+          exit 1
+        fi
+        if ${{ github.event.inputs.issue == 'G6X-' }} 
+        then 
+          echo "🚫 invalid issue ${{ github.event.inputs.version }}, dont use default option"
+          exit 1
+        fi
 
     - name: validate for e-store enterprice
       if: ${{ github.event.inputs.destination == 'e_store_enterprise' }}
