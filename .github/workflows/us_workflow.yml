@@ -3,9 +3,9 @@ name: US Workflow
 on:
   workflow_dispatch:
     inputs:
-      choice:
+      destination:
         type: choice
-        description: destination
+        description: build output destination
         options:
         - artifact_dev
         - artifact_prod_vnv
@@ -22,28 +22,42 @@ on:
 jobs:
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-  build_app:
+  validate_destination:
     runs-on: self-hosted
     steps:
-    
-    # Validate inputs
-    - name: validate inputs
+    - name: print input 
       run: |
-        exit 1
-
-
-
-    - name: bundle install
-      run: echo "installing bundle"
-
-  fastlane:
-    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/fastlane_log.yml@main
-    needs: build_app
-    with:
-      name: pancho
-      path: ./
+        echo "${{ github.event.inputs.destination }}"
+        echo "${{ github.event.inputs.version }}"
+        echo "${{ github.event.inputs.deploy_artifactory }}"
+        
+    #- name: validate for artifact      
+    #- name: validate for for prod_vnv
+    #- name: validate for for e-store
+    #- name: validate for for app-store
+  
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+# build_app:
+#    runs-on: self-hosted
+#    steps:
+#    
+#    # Validate inputs
+#    - name: validate inputs
+#    
+#      run: |
+#        exit 1
+#
+#
+#
+#    - name: bundle install
+#      run: echo "installing bundle"
+#
+#  fastlane:
+#    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/fastlane_log.yml@main
+#    needs: build_app
+#    with:
+#      name: pancho
+#      path: ./
       
       
     
