@@ -24,14 +24,14 @@ jobs:
       run: |
         if ${{ github.event.inputs.version == '0.0.0' }} 
         then 
-          echo "🚫 invalid version ${{ github.event.inputs.version }}"
+          echo "🚫 invalid version ${{ github.event.inputs.version }}, please dont user default value"
           exit 1
         fi
     - name: validating empty version
       run: |
         if ${{ github.event.inputs.version == '' }} 
         then 
-          echo "🚫 invalid empty version "
+          echo "🚫 invalid empty version, plase provide a value"
           exit 1
         fi
 
@@ -46,28 +46,27 @@ jobs:
         echo "is for development"        
         if ${{ github.event.inputs.issue == '' }} 
         then 
-          echo "🚫 invalid empty issue "
+          echo "🚫 invalid empty issue, build for artifactory requires a valid Jira Issue key "
           exit 1
         fi
         if ${{ github.event.inputs.issue == 'G6X-' }} 
         then 
-          echo "🚫 invalid issue ${{ github.event.inputs.issue }}"
+          echo "🚫 invalid issue ${{ github.event.inputs.issue }},please dont use default option"
           exit 1
         fi
 
     - name: validate for artifact prod_vnv
       if: ${{ github.event.inputs.version == 'artifact_prod_vnv' }}
       run: | 
-        echo "is for prod_vnv"
         echo "is for development"        
         if ${{ github.event.inputs.issue == '' }} 
         then 
-          echo "🚫 invalid empty issue "
+          echo "🚫 invalid empty issue, build for artifactory requires a valid Jira Issue key "
           exit 1
         fi
         if ${{ github.event.inputs.issue == 'G6X-' }} 
         then 
-          echo "🚫 invalid issue ${{ github.event.inputs.version }}, dont use default option"
+          echo "🚫 invalid issue ${{ github.event.inputs.issue }},please dont use default option"
           exit 1
         fi
 
