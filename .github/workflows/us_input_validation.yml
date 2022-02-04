@@ -45,7 +45,6 @@ jobs:
         exit 0
 
   version:
-    needs: permission
     runs-on: self-hosted
     steps:
 
@@ -65,8 +64,7 @@ jobs:
           exit 1
         fi
 
-  destination:
-    needs: permission
+  issue:
     runs-on: self-hosted    
     steps:
 
