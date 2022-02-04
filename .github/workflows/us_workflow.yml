@@ -26,8 +26,8 @@ on:
         default: 'G6X-'
 jobs:
 
-  validate:
-    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/us_validation.yml@main
+  input_validation:
+    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/us_input_validation.yml@main
     with:
       destination: ${{ github.event.inputs.destination }}
       version: ${{ github.event.inputs.version }}
@@ -35,7 +35,7 @@ jobs:
       issue: ${{ github.event.inputs.issue }}
     
   build:
-    needs: [validate.issue,validate.version]
+    needs: input_validation
     uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/us_build.yml@main
     with:
       destination: ${{ github.event.inputs.destination }}
