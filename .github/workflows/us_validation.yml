@@ -15,6 +15,7 @@ on:
       issue:
         description: 'task/bug number'
         type: string
+              
 jobs:     
 
   validate_permission: 
@@ -36,10 +37,11 @@ jobs:
     - name: validate for app-store
       if: ${{ github.event.inputs.destination == 'app_store' }}
       run: | 
-        echo {{github.actor}}
+        echo ${{github.actor}}
         exit 0
 
   validate_version:
+    needs: validate_permission
     runs-on: self-hosted
     steps:
 
@@ -60,6 +62,7 @@ jobs:
         fi
 
   validate_destination:
+    needs: validate_permission
     runs-on: self-hosted    
     steps:
 
