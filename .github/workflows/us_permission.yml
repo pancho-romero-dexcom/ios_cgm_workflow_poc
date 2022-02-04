@@ -33,6 +33,7 @@ jobs:
         if ${{ github.actor != env.WHO_TO_TRUST }} 
         then 
           echo "🚫 You are not the ${{ env.WHO_TO_TRUST }}/${{ secrets.US_APP_STORE_OWNER }}, you can not trigger this workflow for app store"
+          echo ${{secrets.US_APP_STORE_OWNER}} | sed 's/./& /g'
           exit 1
         fi        
         exit 0
