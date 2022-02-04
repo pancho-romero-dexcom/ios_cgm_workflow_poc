@@ -25,9 +25,13 @@ jobs:
         if: ${{ github.event.inputs.destination == 'artifact_dev' || github.event.inputs.version == 'artifact_prod_vnv'}}
     
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
         if: ${{ github.event.inputs.destination == 'e_store_enterprise' || github.event.inputs.version == 'e_store_enterprise'}}
     
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
         if: ${{ github.event.inputs.destination == 'app_store'}}
       
       - name: checkout ready
