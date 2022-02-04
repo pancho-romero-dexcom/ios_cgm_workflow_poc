@@ -46,7 +46,7 @@ jobs:
       run: |
         echo "🚧  WIP deploy ${{ github.event.inputs.deploy }}"
 
-  branch_naming:
+  branch:
     runs-on: self-hosted
     steps:
 
