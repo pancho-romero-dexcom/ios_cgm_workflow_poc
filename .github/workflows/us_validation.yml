@@ -44,7 +44,7 @@ jobs:
         fi        
         exit 0
 
-    version:
+  version:
     needs: permission
     runs-on: self-hosted
     steps:
@@ -65,7 +65,7 @@ jobs:
           exit 1
         fi
 
-  validate_destination:
+  destination:
     needs: permission
     runs-on: self-hosted    
     steps:
