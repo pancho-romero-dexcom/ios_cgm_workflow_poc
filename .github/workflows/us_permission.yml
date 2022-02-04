@@ -28,7 +28,7 @@ jobs:
     
     - name: validate for app-store
       if: ${{ github.event.inputs.destination == 'app_store' }}
-        env: 
+      env: 
         WHO_TO_TRUST: ${{ secrets.US_APP_STORE_OWNER }}
       run: | 
         if ${{ github.actor != WHO_TO_TRUST }} 
