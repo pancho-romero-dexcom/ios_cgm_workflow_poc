@@ -7,6 +7,8 @@ on:
         description: build output destination
         type: string
 
+env: 
+  WHO_TO_TRUST: ${{ secrets.US_APP_STORE_OWNER }}
 
 jobs:     
 
@@ -28,8 +30,6 @@ jobs:
     
     - name: validate for app-store
       if: ${{ github.event.inputs.destination == 'app_store' }}
-      env: 
-        WHO_TO_TRUST: ${{ secrets.US_APP_STORE_OWNER }}
       run: | 
         if ${{ github.actor != WHO_TO_TRUST }} 
         then 
