@@ -17,10 +17,10 @@ on:
         required: true
         default: '0.0.0'
       deploy:
-        description: 'App version structure on artifactory or e-store'
+        description: 'deply for artifactory or e-store'
         required: true
         default: '0.0.0'
-      issue:
+      issue_key:
         description: 'task/bug number'
         required: true
         default: 'G6X-'
@@ -38,7 +38,7 @@ jobs:
       destination: ${{ github.event.inputs.destination }}
       version: ${{ github.event.inputs.version }}
       deploy: ${{ github.event.inputs.deploy }}
-      issue: ${{ github.event.inputs.issue }}
+      issue: ${{ github.event.inputs.issue_key }}
     
   build:
     needs: input_validation
@@ -47,4 +47,4 @@ jobs:
       destination: ${{ github.event.inputs.destination }}
       version: ${{ github.event.inputs.version }}
       deploy: ${{ github.event.inputs.deploy }}
-      issue: ${{ github.event.inputs.issue }}
+      issue: ${{ github.event.inputs.issue_key }}
