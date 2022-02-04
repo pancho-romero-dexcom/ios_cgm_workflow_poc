@@ -38,15 +38,13 @@ jobs:
           exit 1
         fi
 
-  version:
+  deploy:
     runs-on: self-hosted
     steps:
 
     - name:
       run: |
-        echo "🚧  WIP deploy ${{ github.event.inputsdeploy }}"
-
-
+        echo "🚧  WIP deploy ${{ github.event.inputs.deploy }}"
 
   issue:
     runs-on: self-hosted    
