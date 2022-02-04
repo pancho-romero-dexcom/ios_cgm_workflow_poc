@@ -33,9 +33,6 @@ jobs:
         with:
           fetch-depth: 0
         if: ${{ github.event.inputs.destination == 'app_store'}}
-      
-      - name: checkout ready
-        run: echo "✅ branch is ready to build"
 
   fastlane:
     needs: checkout 
