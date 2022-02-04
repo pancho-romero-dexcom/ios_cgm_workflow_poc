@@ -31,7 +31,7 @@ jobs:
         WHO_TO_TRUST: ${{ secrets.US_APP_STORE_OWNER }}
       if: ${{ github.event.inputs.destination == 'app_store' }}
       run: | 
-        if ${{ github.actor != WHO_TO_TRUST }} 
+        if ${{ github.actor != env.WHO_TO_TRUST }} 
         then 
           echo "🚫 You are not the US_APP_STORE_OWNER, you can not trigger this workflow for app store"
           exit 1
