@@ -36,7 +36,7 @@ jobs:
     - name: validate for app-store
       if: ${{ github.event.inputs.destination == 'app_store' }}
       run: | 
-        echo "🚫 {{github.actor}} has not permission to build for app store"  
+        echo {{github.actor}}
         exit 0
 
   validate_version:
@@ -50,7 +50,7 @@ jobs:
           echo "🚫 invalid version ${{ github.event.inputs.version }}, please dont user default value"
           exit 1
         fi
-        
+
     - name: validating empty version
       run: |
         if ${{ github.event.inputs.version == '' }} 
