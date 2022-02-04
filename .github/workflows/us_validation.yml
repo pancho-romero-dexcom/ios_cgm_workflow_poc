@@ -15,7 +15,7 @@ on:
       issue:
         description: 'task/bug number'
         type: string
-              
+
 jobs:     
 
   validate_permission: 
@@ -37,7 +37,11 @@ jobs:
     - name: validate for app-store
       if: ${{ github.event.inputs.destination == 'app_store' }}
       run: | 
-        echo ${{github.actor}}
+        if ${{ github.actor != secrets.US_APP_STORE_OWNER }} 
+        then 
+          echo "🚫 You are not the US_APP_STORE_OWNER "
+          exit 1
+        fi        
         exit 0
 
   validate_version:
