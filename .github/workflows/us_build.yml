@@ -34,7 +34,7 @@ jobs:
         run: echo "✅ branch is ready to build"
 
   fastlane:
-    checkout: fastlane 
+    needs: checkout 
     runs-on: self-hosted    
     steps:
 
