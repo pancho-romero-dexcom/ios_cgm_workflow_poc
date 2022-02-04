@@ -58,27 +58,27 @@ jobs:
     runs-on: self-hosted    
     steps:
 
-    - name: validate for artifact 
+    - name: validate issue_key for artifact 
       if: ${{ github.event.inputs.destination == 'artifact_dev' || github.event.inputs.version == 'artifact_prod_vnv' }}
       run: | 
-        if ${{ github.event.inputs.issue == '' }} 
+        if ${{ github.event.inputs.issue_key == '' }} 
         then 
           echo "🚫 invalid empty issue, build for artifactory requires a valid Jira Issue key "
           exit 1
         fi
-        if ${{ github.event.inputs.issue == 'G6X-' }} 
+        if ${{ github.event.inputs.issue_key == 'G6X-' }} 
         then 
           echo "🚫 invalid issue ${{ github.event.inputs.issue }},please dont use default option"
           exit 1
         fi
 
-    - name: validate for e-store enterprice
+    - name: validate issue_key for e-store 
       if: ${{ github.event.inputs.destination == 'e_store_enterprise' || github.event.inputs.destination == 'e_store_prod_vnv' }}
       run: | 
         echo "is for e-store" 
         exit 0    
     
-    - name: validate for app-store
+    - name: validate issue_key for app-store
       if: ${{ github.event.inputs.destination == 'app_store' }}
       run: | 
         echo "is for app-store"  
