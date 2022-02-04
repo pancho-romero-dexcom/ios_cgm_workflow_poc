@@ -35,8 +35,7 @@ jobs:
       issue: ${{ github.event.inputs.issue }}
     
   build:
-    needs: validate
-    if: always()
+    needs: [validate.issue,validate.version]
     uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/us_build.yml@main
     with:
       destination: ${{ github.event.inputs.destination }}
