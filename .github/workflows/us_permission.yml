@@ -1,0 +1,36 @@
+name  : (US) Permission
+
+on:
+  workflow_call:
+    inputs:
+      destination:
+        description: build output destination
+        type: string
+      
+jobs:     
+
+  run_workflow: 
+    runs-on: self-hosted
+    steps:
+
+    - name: validate permision for artifact
+      if: ${{ github.event.inputs.destination == 'artifact_dev' || github.event.inputs.version == 'artifact_prod_vnv' }}
+      run: | 
+        echo "✅ Everybody can run for artifacts"
+        exit 0
+    
+    - name: validate permision for e-store 
+      if: ${{ github.event.inputs.destination == 'e_store_enterprise' || github.event.inputs.destination == 'e_store_prod_vnv' }}
+      run: | 
+        echo "✅ Everybody can run for artifacts"
+        exit 0    
+    
+    - name: validate for app-store
+      if: ${{ github.event.inputs.destination == 'app_store' }}
+      run: | 
+        if ${{ github.actor != 'pancho-romero-dexcom' }} 
+        then 
+          echo "🚫 You are not the US_APP_STORE_OWNER, you can not trigger this workflow for app store"
+          exit 1
+        fi        
+        exit 0
