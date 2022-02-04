@@ -12,7 +12,7 @@ on:
       deploy:
         description: 'App version structure on artifactory or e-store'
         type: string
-      issue:
+      issue_key:
         description: 'task/bug number'
         type: string
 

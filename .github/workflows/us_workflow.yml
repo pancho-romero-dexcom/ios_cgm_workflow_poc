@@ -38,7 +38,7 @@ jobs:
       destination: ${{ github.event.inputs.destination }}
       version: ${{ github.event.inputs.version }}
       deploy: ${{ github.event.inputs.deploy }}
-      issue: ${{ github.event.inputs.issue_key }}
+      issue_key: ${{ github.event.inputs.issue_key }}
     
   build:
     needs: input_validation
@@ -47,4 +47,4 @@ jobs:
       destination: ${{ github.event.inputs.destination }}
       version: ${{ github.event.inputs.version }}
       deploy: ${{ github.event.inputs.deploy }}
-      issue: ${{ github.event.inputs.issue_key }}
+      issue_key: ${{ github.event.inputs.issue_key }}
