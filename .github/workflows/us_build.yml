@@ -1,7 +1,5 @@
 name: (US) Build
 
-
-
 on:
   workflow_call:
     inputs:
@@ -26,7 +24,7 @@ jobs:
     - name: build for artifact dev
       if: ${{ github.event.inputs.destination == 'artifact_dev' }}
       run: | 
-        echo "building for development"
+        echo "bundle exec fastlane g6_enterprise version:${{ github.event.inputs.version }} deploy_artifactory:${{ github.event.inputs.deploy_artifactory }} issue:${{ github.event.inputs.issue }}"
         exit 0
 
     - name: build for artifact prod_vnv
