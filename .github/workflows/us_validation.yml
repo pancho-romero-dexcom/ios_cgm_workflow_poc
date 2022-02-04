@@ -39,7 +39,7 @@ jobs:
       run: | 
         if ${{ github.actor != secrets.US_APP_STORE_OWNER }} 
         then 
-          echo "🚫 You are not the US_APP_STORE_OWNER "
+          echo "🚫 You are not the US_APP_STORE_OWNER, you can not trigger this workflow for app store"
           exit 1
         fi        
         exit 0
