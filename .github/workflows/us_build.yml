@@ -24,7 +24,7 @@ jobs:
     - name: build for artifact dev
       if: ${{ github.event.inputs.destination == 'artifact_dev' }}
       run: | 
-        echo "bundle exec fastlane g6_enterprise version:${{ github.event.inputs.version }} deploy_artifactory:${{ github.event.inputs.deploy }} issue:${{ github.event.inputs.issue }}"
+        echo "building for development"
         exit 0
 
     - name: build for artifact prod_vnv
