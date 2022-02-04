@@ -28,7 +28,7 @@ jobs:
     - name: validate for app-store
       if: ${{ github.event.inputs.destination == 'app_store' }}
       run: | 
-        if ${{ github.actor != 'pancho-romero-dexcom' }} 
+        if ${{ github.actor != secrets.US_APP_STORE_OWNER }} 
         then 
           echo "🚫 You are not the US_APP_STORE_OWNER, you can not trigger this workflow for app store"
           exit 1
