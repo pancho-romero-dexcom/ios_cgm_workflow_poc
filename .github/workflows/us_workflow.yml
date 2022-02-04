@@ -33,9 +33,7 @@ jobs:
       version: ${{ github.event.inputs.version }}
       deploy: ${{ github.event.inputs.deploy }}
       issue: ${{ github.event.inputs.issue }}
-    - name: actor
-      run: echo {{github.actor}}
-
+    
   build:
     needs: validate
     if: always()
