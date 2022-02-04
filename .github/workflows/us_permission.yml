@@ -6,7 +6,8 @@ on:
       destination:
         description: build output destination
         type: string
-
+env: 
+  WHO_TO_TRUST: ${{ secrets.US_APP_STORE_OWNER }}
 
 jobs:     
 
@@ -27,13 +28,11 @@ jobs:
         exit 0    
     
     - name: validate for app-store
-      env: 
-        WHO_TO_TRUST: ${{ secrets.US_APP_STORE_OWNER }}
       if: ${{ github.event.inputs.destination == 'app_store' }}
       run: | 
         if ${{ github.actor != env.WHO_TO_TRUST }} 
         then 
-          echo "🚫 You are not the ${{ env.WHO_TO_TRUST }}, you can not trigger this workflow for app store"
+          echo "🚫 You are not the ${{ env.WHO_TO_TRUST }}/${{ secrets.US_APP_STORE_OWNER }}, you can not trigger this workflow for app store"
           exit 1
         fi        
         exit 0
