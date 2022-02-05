@@ -21,14 +21,17 @@ jobs:
     runs-on: self-hosted
     
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Artofactory
+        uses: actions/checkout@v2
         if: ${{ github.event.inputs.destination == 'artifact_dev' || github.event.inputs.version == 'artifact_prod_vnv'}}
     
-      - uses: actions/checkout@v2
+      - name: Checkout eStore
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
         if: ${{ github.event.inputs.destination == 'e_store_enterprise' || github.event.inputs.version == 'e_store_enterprise'}}
     
+      - name: Checkout App Store
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
