@@ -6,8 +6,11 @@ on:
       destination:
         description: build output destination
         type: string
+    secrets:
+      owner:
+        required: true
 env: 
-  WHO_TO_TRUST: pancho-romero-dexcom
+  WHO_TO_TRUST: ${{secrets.owner}}
 
 jobs:     
 
