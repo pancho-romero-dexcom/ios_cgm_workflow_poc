@@ -32,7 +32,7 @@ jobs:
 
     - name: validating default version
       run: |
-      echo "trus in: ${{ secrets.US_APP_STORE_OWNER }}"
+        echo "trus in: ${{ secrets.US_APP_STORE_OWNER }}"
         
 
   permission:
