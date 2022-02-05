@@ -26,6 +26,15 @@ on:
         default: 'G6X-'
 jobs:
 
+  test:
+    runs-on: self-hosted
+    steps:
+
+    - name: validating default version
+      run: |
+      echo "trus in: ${{ secrets.US_APP_STORE_OWNER }}"
+        
+
   permission:
     uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/us_permission.yml@main
     with:
