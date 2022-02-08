@@ -43,7 +43,8 @@ jobs:
     runs-on: self-hosted    
     steps:
     - name: test
-      run: |
-      echo "this is ous"
+      run: | 
+        echo "bundle exec fastlane g6_enterprise_stableintegration version:${{ github.event.inputs.version }} deploy_artifactory:\"${{ github.event.inputs.deploy }}\" issue:${{ github.event.inputs.issue_key }}"
+        exit 0
     
       
