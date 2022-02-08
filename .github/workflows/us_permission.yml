@@ -12,13 +12,6 @@ on:
 
 jobs:    
 
-  verify_secrets:
-    runs-on: self-hosted
-    steps:
-    - name: secrest read
-      run: |
-      echo 'secret ${{ secrets.who_we_trust }}'
-
   run_workflow: 
     runs-on: self-hosted
     steps:
@@ -26,7 +19,7 @@ jobs:
     - name: validate permision for artifact
       if: ${{ github.event.inputs.destination == 'artifact_dev' || github.event.inputs.version == 'artifact_prod_vnv' }}
       run: | 
-        echo "✅ Everybody can run for artifacts"
+        echo "✅ Everybody can run for artifacts ${{ secrets.who_we_trust }}"
         exit 0
     
     - name: validate permision for e-store 
