@@ -1,4 +1,4 @@
-name: (OUS) Workflow
+name: Workflow [OUS]
 
 on:
   workflow_dispatch:

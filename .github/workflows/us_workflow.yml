@@ -1,4 +1,4 @@
-name: (US) Workflow
+name: Workflow [US] 
 
 on:
   workflow_dispatch:
