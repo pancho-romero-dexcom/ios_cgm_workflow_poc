@@ -18,6 +18,9 @@ on:
       region:
         description: 'region build'
         type: string
+      unit: 
+        description: 'unit build'
+        type: string
 jobs:     
 
   checkout:

@@ -61,4 +61,15 @@ jobs:
       deploy: ${{ github.event.inputs.deploy }}
       issue_key: ${{ github.event.inputs.issue_key }}
     
+  build:
+    needs: input_validation
+    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/us_build.yml@main
+    with:
+      destination: ${{ github.event.inputs.destination }}
+      version: ${{ github.event.inputs.version }}
+      deploy: ${{ github.event.inputs.deploy }}
+      issue_key: ${{ github.event.inputs.issue_key }}
+      region: ${{ github.event.inputs.region }}
+      unit: ${{ github.event.inputs.unit }}
+    
       
