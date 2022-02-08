@@ -1,0 +1,48 @@
+name: (US) Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      destination:
+        type: choice
+        description: build output destination
+        options:
+        - artifact_dev
+        - artifact_prod_vnv
+        - e_store_enterprise
+        - e_store_prod_vnv
+        - app_store
+      region: choice
+        description: OUS avilable regions
+        options:
+        - r01
+        - r02
+        - r03
+        - r06
+        - r07
+        - r08
+        - r09
+        - r10
+        - r11        
+      version:
+        description: 'App version'
+        required: true
+        default: '0.0.0'
+      deploy:
+        description: 'deply for artifactory or e-store'
+        required: true
+        default: '0.0.0'
+      issue_key:
+        description: 'task/bug number'
+        required: true
+        default: 'G6X-'
+jobs:
+
+  test:
+    runs-on: self-hosted    
+    steps:
+    - name: test
+      run: |
+      echo "this is ous"
+    
+      
