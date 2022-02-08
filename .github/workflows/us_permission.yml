@@ -19,7 +19,7 @@ jobs:
     - name: validate permision for artifact
       if: ${{ github.event.inputs.destination == 'artifact_dev' || github.event.inputs.version == 'artifact_prod_vnv' }}
       run: | 
-        echo "✅ Everybody can run for artifacts ${{ secrets.who_we_trust }}"
+        echo "✅ Everybody can run for artifacts "
         exit 0
     
     - name: validate permision for e-store 
@@ -31,9 +31,9 @@ jobs:
     - name: validate for app-store
       if: ${{ github.event.inputs.destination == 'app_store' }}
       run: | 
-        if ${{ github.actor != env.WHO_TO_TRUST }} 
+        if ${{ github.actor != ${{ secrets.who_we_trust }} }} 
         then 
-          echo "🚫 You are not ${{ env.WHO_TO_TRUST }}, you can not trigger this workflow for app store"
+          echo "🚫 You are not ${{ ${{ secrets.who_we_trust }} }}, you can not trigger this workflow for app store"
           
           exit 1
         fi        
