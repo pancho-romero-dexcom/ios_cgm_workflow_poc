@@ -1,4 +1,4 @@
-name  : ♻️  (US) Build
+name  : ♻️-Build [US]
 
 on:
   workflow_call:
