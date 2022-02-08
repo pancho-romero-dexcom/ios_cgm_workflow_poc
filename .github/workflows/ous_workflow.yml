@@ -12,8 +12,9 @@ on:
         - e_store_enterprise
         - e_store_prod_vnv
         - app_store
-      region: choice
-        description: OUS avilable regions
+      region: 
+        type: choice
+        description: OUS Region
         options:
         - r01
         - r02
