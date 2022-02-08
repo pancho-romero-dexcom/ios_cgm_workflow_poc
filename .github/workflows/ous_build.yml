@@ -1,0 +1,78 @@
+name  : ♻️-Build [OUS]
+
+on:
+  workflow_call:
+    inputs:
+      destination:
+        description: build output destination
+        type: string
+      version:
+        description: 'App version'
+        type: string
+      deploy:
+        description: 'App version structure on artifactory or e-store'
+        type: string
+      issue_key:
+        description: 'task/bug number'
+        type: string
+      region:
+        description: 'region build'
+        type: string
+jobs:     
+
+  
+  fastlane:
+    needs: checkout 
+    runs-on: self-hosted
+    steps:
+
+    - uses: actions/checkout@v2
+        if: ${{ github.event.inputs.destination == 'artifact_dev' || github.event.inputs.version == 'artifact_prod_vnv'}}
+    
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+        if: ${{ github.event.inputs.destination == 'e_store_enterprise' || github.event.inputs.version == 'e_store_enterprise'}}
+    
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+        if: ${{ github.event.inputs.destination == 'app_store'}}
+        
+    - name: build for artifact dev
+      if: ${{ github.event.inputs.destination == 'artifact_dev' }}
+      run: | 
+        echo "🚧 "
+        exit 0
+
+    - name: build for artifact prod_vnv
+      if: ${{ github.event.inputs.version == 'artifact_prod_vnv' }}
+      run: | 
+        echo "🚧 "
+        exit 0
+
+    - name: build for e-store enterprice
+      if: ${{ github.event.inputs.destination == 'e_store_enterprise' }}
+      run: | 
+        echo "🚧 "
+        exit 0
+    
+    - name: build for e-store prod-vnv
+      if: ${{ github.event.inputs.destination == 'e_store_prod_vnv' }}
+      run: | 
+        echo "🚧 "
+        exit 0
+
+    - name: build for app-store
+      if: ${{ github.event.inputs.destination == 'app_store' }}
+      run: | 
+        echo "🚧 "
+        exit 0
+
+  log:
+    needs: fastlane 
+    runs-on: self-hosted    
+    steps:
+    - name: actions/upload-artifact@v2
+      run: |
+        echo "uploading artifact"
