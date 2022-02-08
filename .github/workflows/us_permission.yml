@@ -6,11 +6,18 @@ on:
       destination:
         description: build output destination
         type: string
-    
-env: 
-  WHO_TO_TRUST: ${{secrets.owner}}
+    secrets:
+      who_we_trust:
+        required: true
 
-jobs:     
+jobs:    
+
+  verify_secrets:
+  runs-on: self-hosted
+    steps:
+    - name: secrest read
+      run: |
+      echo 'secret " ${{secrets.who_we_trust}}'
 
   run_workflow: 
     runs-on: self-hosted
