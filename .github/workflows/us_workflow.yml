@@ -27,7 +27,7 @@ on:
 jobs:
 
   permission:
-    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/permission.yml@main
+    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/reusable_permission.yml@main
     with:
       destination: ${{ github.event.inputs.destination }}
     secrets:
@@ -35,7 +35,7 @@ jobs:
       
   input_validation:
     needs: permission
-    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/us_input_validation.yml@main
+    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/reusable_input_validation.yml@main
     with:
       destination: ${{ github.event.inputs.destination }}
       version: ${{ github.event.inputs.version }}

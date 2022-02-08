@@ -36,14 +36,29 @@ on:
         - r08
         - r09
         - r10
-        - r11      
+        - r11
+      unit: 
+        type: choice
+        description: CGM Unit
+        options:
+        - mgdl
+        - mmol     
 jobs:
 
   permission:
-    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/permission.yml@main
+    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/reusable_permission.yml@main
     with:
       destination: ${{ github.event.inputs.destination }}
     secrets:
       who_we_trust: ${{ secrets.OUS_APP_STORE_OWNER }}
+      
+  input_validation:
+    needs: permission
+    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/reusable_input_validation.yml@main
+    with:
+      destination: ${{ github.event.inputs.destination }}
+      version: ${{ github.event.inputs.version }}
+      deploy: ${{ github.event.inputs.deploy }}
+      issue_key: ${{ github.event.inputs.issue_key }}
     
       

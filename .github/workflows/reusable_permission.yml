@@ -1,4 +1,4 @@
-name  : ♻️ Permission [US & OUS]
+name  : ♻️-Permission [US & OUS]
 
 on:
   workflow_call:

@@ -1,4 +1,4 @@
-name: ♻️-Validation [US]
+name: ♻️-Validation [US & OUS]
 
 on:
   workflow_call:
