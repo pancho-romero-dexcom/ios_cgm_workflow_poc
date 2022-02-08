@@ -27,7 +27,7 @@ on:
 jobs:
 
   permission:
-    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/us_permission.yml@main
+    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/permission.yml@main
     with:
       destination: ${{ github.event.inputs.destination }}
     secrets:

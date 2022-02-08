@@ -11,20 +11,7 @@ on:
         - artifact_prod_vnv
         - e_store_enterprise
         - e_store_prod_vnv
-        - app_store
-      region: 
-        type: choice
-        description: OUS Region
-        options:
-        - r01
-        - r02
-        - r03
-        - r06
-        - r07
-        - r08
-        - r09
-        - r10
-        - r11        
+        - app_store        
       version:
         description: 'App version'
         required: true
@@ -37,14 +24,26 @@ on:
         description: 'task/bug number'
         required: true
         default: 'G6X-'
+      region: 
+        type: choice
+        description: OUS Region
+        options:
+        - r01
+        - r02
+        - r03
+        - r06
+        - r07
+        - r08
+        - r09
+        - r10
+        - r11      
 jobs:
 
-  test:
-    runs-on: self-hosted    
-    steps:
-    - name: test
-      run: | 
-        echo "bundle exec fastlane g6_enterprise_stableintegration version:${{ github.event.inputs.version }} deploy_artifactory:\"${{ github.event.inputs.deploy }}\" issue:${{ github.event.inputs.issue_key }}"
-        exit 0
+  permission:
+    uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/permission.yml@main
+    with:
+      destination: ${{ github.event.inputs.destination }}
+    secrets:
+      who_we_trust: ${{ secrets.OUS_APP_STORE_OWNER }}
     
       
