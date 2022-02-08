@@ -29,8 +29,7 @@ jobs:
   permission:
     uses: pancho-romero-dexcom/ios_cgm_workflow_poc/.github/workflows/us_permission.yml@main
     with:
-      destination: ${{ github.event.inputs.destination }}
-      owner: ${{ secrets.US_APP_STORE_OWNER }}
+      destination: ${{ github.event.inputs.destination }}      
       
   input_validation:
     needs: permission
