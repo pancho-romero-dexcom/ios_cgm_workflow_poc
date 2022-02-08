@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: secrest read
       run: |
-      echo 'secret " ${{secrets.who_we_trust}}'
+      echo 'secret ${{secrets.who_we_trust}}'
 
   run_workflow: 
     runs-on: self-hosted
